@@ -1,0 +1,32 @@
+# Central settings for the byro website.
+# Texts live in content/<language>.toml, layout in templates/.
+
+[site]
+# Public base URL without trailing slash. The environment variable SITE_URL
+# overrides it at build time; the deploy workflow sets it from the GitHub
+# Pages configuration, so a temporary https://<owner>.github.io/<repo> URL
+# works as well as the custom domain.
+url = "https://byro.info"
+# Language of the neutral start page "/" and of the x-default fallback.
+default_language = "de"
+languages = ["de", "en"]
+# Language the start page "/" sends a visitor to when none of their browser
+# languages is available.
+browser_fallback_language = "en"
+
+[links]
+github = "https://github.com/byro/byro"
+issues = "https://github.com/byro/byro/issues"
+
+# Both documentation trees use identical relative paths, so a page path such
+# as "installation/overview/" works for every language.
+[links.docs]
+de = "https://byro.readthedocs.io/de/latest/"
+en = "https://byro.readthedocs.io/en/latest/"
+
+[demo]
+# As long as url is empty, the demo pages and all links to them are left out.
+# Example: url = "https://demo.byro.info"
+url = ""
+username = ""
+password = ""

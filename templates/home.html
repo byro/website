@@ -1,0 +1,102 @@
+{% extends "base.html" %}
+{% from "partials/macros.html" import screenshot %}
+{% block main %}
+    <section class="hero">
+      <div class="container hero-text">
+        <p class="eyebrow">{{ p.eyebrow }}</p>
+        <h1>{{ p.heading }}</h1>
+        <p class="lead">{{ p.lead }}</p>
+        <div class="actions">
+          <a class="button primary" href="{{ docs_url(lang) }}">{{ p.cta_docs }}</a>
+          <a class="button secondary" href="{{ config.links.github }}">{{ p.cta_github }}</a>
+{% if demo.url %}
+          <a class="button secondary" href="{{ url(lang ~ '/demo/') }}">{{ p.cta_demo }}</a>
+{% endif %}
+        </div>
+      </div>
+      <div class="container hero-image">
+        {{ screenshot('member-list', lang, p.hero_alt, p.screenshot_caption, '(min-width: 1184px) 1120px, calc(100vw - 32px)', eager=True) }}
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="features-heading">
+      <div class="container">
+        <h2 id="features-heading">{{ p.features_heading }}</h2>
+        <p class="section-intro">{{ p.features_intro }}</p>
+        <ul class="card-grid">
+{% for feature in p.features %}
+          <li class="card">
+            <span class="card-icon">{{ icon(feature.icon) }}</span>
+            <h3>{{ feature.title }}</h3>
+            <p>{{ feature.text }}</p>
+          </li>
+{% endfor %}
+        </ul>
+      </div>
+    </section>
+
+{% for item in p.showcase %}
+    <section class="section showcase{% if loop.index is even %} showcase-reverse{% endif %}" aria-labelledby="showcase-{{ loop.index }}">
+      <div class="container showcase-inner">
+        <div class="showcase-text">
+          <h2 id="showcase-{{ loop.index }}">{{ item.heading }}</h2>
+          <p>{{ item.text }}</p>
+        </div>
+        {{ screenshot(item.image, lang, item.alt, p.screenshot_caption, '(min-width: 900px) 640px, calc(100vw - 32px)') }}
+      </div>
+    </section>
+{% endfor %}
+
+{% set selfhosted = p.selfhosted %}
+    <section class="section section-alt" aria-labelledby="selfhosted-heading">
+      <div class="container split">
+        <div>
+          <h2 id="selfhosted-heading">{{ selfhosted.heading }}</h2>
+          <p>{{ selfhosted.text }}</p>
+          <p>{{ selfhosted.methods_intro }}</p>
+          <ul class="methods">
+{% for method in selfhosted.methods %}
+            <li>
+              <a href="{{ docs_url(lang, method.docs_path) }}">{{ method.title }}</a>
+{% if method.note is defined %}
+              <span class="badge">{{ method.note }}</span>
+{% endif %}
+              <p>{{ method.text|html }}</p>
+            </li>
+{% endfor %}
+          </ul>
+        </div>
+        <aside class="note" aria-labelledby="not-heading">
+          <h3 id="not-heading">{{ selfhosted.not_heading }}</h3>
+          <p>{{ selfhosted.not_text }}</p>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="start-heading">
+      <div class="container">
+        <h2 id="start-heading">{{ p.start.heading }}</h2>
+        <ul class="card-grid card-grid-3">
+{% for path in p.start.paths %}
+          <li class="card">
+            <span class="card-icon">{{ icon(path.icon) }}</span>
+            <h3>{{ path.title }}</h3>
+            <p>{{ path.text }}</p>
+            <a class="card-link" href="{{ docs_url(lang, path.docs_path) }}">{{ path.link }}</a>
+          </li>
+{% endfor %}
+        </ul>
+      </div>
+    </section>
+
+    <section class="section section-alt" aria-labelledby="opensource-heading">
+      <div class="container closing">
+        <h2 id="opensource-heading">{{ p.opensource.heading }}</h2>
+        <p>{{ p.opensource.text }}</p>
+        <div class="actions">
+          <a class="button primary" href="{{ config.links.github }}">{{ p.opensource.cta_github }}</a>
+          <a class="button secondary" href="{{ docs_url(lang, p.opensource.contributing_path) }}">{{ p.opensource.cta_contributing }}</a>
+        </div>
+      </div>
+    </section>
+{% endblock %}
