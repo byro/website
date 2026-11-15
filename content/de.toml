@@ -1,0 +1,172 @@
+# German texts. Keep the keys in sync with content/en.toml.
+# Statements must be backed by the byro repository or its documentation.
+
+language_name = "Deutsch"
+og_locale = "de_DE"
+
+[common]
+skip_link = "Zum Inhalt springen"
+home_label = "byro – Startseite"
+nav_label = "Hauptnavigation"
+nav_docs = "Doku"
+nav_github = "GitHub"
+nav_demo = "Demo"
+switch_language = "Diese Seite auf Deutsch"
+footer_heading = "Links"
+footer_docs = "Dokumentation"
+footer_github = "Quellcode auf GitHub"
+footer_issues = "Fehler melden oder Funktion vorschlagen"
+footer_demo = "Demo"
+footer_license = """
+byro ist freie Software unter der \
+<a href="https://github.com/byro/byro/blob/main/LICENSE">GNU Affero General Public License, Version 3.0 only</a>.\
+"""
+footer_credits = """
+Das byro-Logo stammt von Markus Kempken (<a href="http://enigmation.de">enigmation.de</a>). \
+Die Screenshots zeigen byro v2026.4.0 mit den mitgelieferten Testdaten und stehen, \
+mit Ausnahme des darin sichtbaren Logos, unter \
+<a href="https://creativecommons.org/licenses/by-sa/4.0/deed.de">CC BY-SA 4.0</a>. \
+Schrift: Inter (SIL Open Font License), Icons: Lucide (ISC-Lizenz).\
+"""
+
+[root]
+title = "byro – freie Mitgliederverwaltung für Vereine"
+description = "byro ist eine freie, selbst gehostete Mitgliederverwaltung für kleine und mittelgroße Vereine, NGOs und Verbände. Diese Website gibt es auf Deutsch und Englisch."
+heading = "byro – freie Mitgliederverwaltung für Vereine"
+lead = "byro ist eine einfache, selbst gehostete Mitgliederverwaltung für kleine und mittelgroße Vereine, NGOs und Verbände mit Schwerpunkt auf der DACH-Region."
+choose = "Bitte wähle deine Sprache:"
+german = "Deutsch"
+german_hint = "Zur deutschen Website"
+english = "English"
+english_hint = "Go to the English website"
+
+[home]
+title = "byro – Open-Source-Mitgliederverwaltung für Vereine"
+description = "byro ist eine freie, selbst gehostete Mitgliederverwaltung für kleine und mittelgroße Vereine, NGOs und Verbände mit Schwerpunkt auf der DACH-Region."
+eyebrow = "Freie Software für Vereine"
+heading = "Mitgliederverwaltung für Vereine, die du selbst betreibst"
+lead = "byro ist eine einfache Mitgliederverwaltung für kleine und mittelgroße Vereine, NGOs und Verbände mit Schwerpunkt auf der DACH-Region. byro ist stabil, in mehreren Communities im Einsatz und wird aktiv weiterentwickelt."
+cta_docs = "Dokumentation lesen"
+cta_github = "Quellcode auf GitHub"
+cta_demo = "Demo ausprobieren"
+hero_alt = "Mitgliederliste in byro mit Mitgliedsnummer, Name und Kontostand sowie Schaltflächen zum Hinzufügen, Exportieren und Importieren von Mitgliedern"
+screenshot_caption = "byro v2026.4.0 mit Testdaten"
+
+features_heading = "Was byro kann"
+features_intro = "byro deckt die Verwaltungsarbeit rund um Mitglieder, Beiträge und Zahlungen ab. Was fehlt, lässt sich über Plugins ergänzen."
+
+[[home.features]]
+icon = "users"
+title = "Mitglieder und Beiträge"
+text = "Mitglieder und ihre Daten anlegen und bearbeiten, Mitgliedschaften mit Beitrag und Zahlungsintervall verwalten."
+
+[[home.features]]
+icon = "banknote"
+title = "Zahlungen zuordnen"
+text = "Banktransaktionen importieren und Mitgliedern zuordnen. Das offizielle Plugin liest Kontoauszüge im Format CAMT.053 und MT940."
+
+[[home.features]]
+icon = "mails"
+title = "E-Mails und Dokumente"
+text = "Mails vor dem Versand prüfen, Vorlagen anpassen und Dokumente für oder von Mitgliedern ablegen, auf Wunsch mit automatischem Versand."
+
+[[home.features]]
+icon = "id-card"
+title = "Mitgliederbereich"
+text = "Jedes Mitglied hat eine eigene Seite mit seinen Buchungen und kann Änderungen an seinen Daten vorschlagen. Über das Mitgliederverzeichnis finden sich Mitglieder untereinander."
+
+[[home.features]]
+icon = "shield-check"
+title = "Mehr-Faktor-Anmeldung"
+text = "Zugänge zur Verwaltung lassen sich mit einer Authenticator-App (TOTP) schützen. Administratoren können das für alle vorschreiben."
+
+[[home.features]]
+icon = "puzzle"
+title = "Plugins und REST-API"
+text = "Plugins ergänzen Importer, eigene Mitgliedsdaten oder ganze Funktionen. Über die REST-API lassen sich andere Systeme anbinden."
+
+[[home.showcase]]
+image = "member-overview"
+heading = "Jedes Mitglied auf einen Blick"
+text = "Die Übersicht eines Mitglieds zeigt den Status, den aktuellen Kontostand, offene und verjährte Beiträge, die Dauer der Mitgliedschaft und den vereinbarten Beitrag."
+alt = "Übersicht eines Mitglieds in byro mit Status „aktiv“, Kontostand, ausstehenden und verjährten Beiträgen, Mitgliedsdauer und monatlichem Beitrag"
+
+[[home.showcase]]
+image = "bank-account"
+heading = "Finanzen nachvollziehen"
+text = "Banktransaktionen landen auf den Konten des Vereins. Jede einzelne Buchung bleibt nachvollziehbar, und Transaktionen, die noch keinem Mitglied zugeordnet sind, zeigt byro gesondert an."
+alt = "Bankkonto in byro mit einer Liste von Transaktionen: Datum, Verwendungszweck sowie Zu- und Abgängen"
+
+[home.selfhosted]
+heading = "Du betreibst byro selbst"
+text = "byro ist kein gehosteter Dienst. Du installierst es auf einem eigenen Server, oder jemand aus deiner Organisation oder deinem Umfeld betreibt es für euch. Wer byro betreibt, ist für die persönlichen und finanziellen Daten der Mitglieder verantwortlich."
+methods_intro = "Die Dokumentation beschreibt drei Installationswege:"
+not_heading = "Was byro nicht ist"
+not_text = "byro unterstützt Buchungen und Transaktionen, ist aber (noch) keine vollständige Buchhaltungssoftware. Veranstaltungen oder Ticketing deckt byro ebenfalls nicht ab."
+
+[[home.selfhosted.methods]]
+title = "byroctl"
+note = "empfohlen"
+text = "Ein Kommandozeilenwerkzeug, das byro mit Docker Compose einrichtet und Updates einspielt."
+docs_path = "installation/byroctl/"
+
+[[home.selfhosted.methods]]
+title = "Docker Compose"
+text = "Dasselbe Container-Image, verwaltet mit gewöhnlichen <code>docker compose</code>-Befehlen."
+docs_path = "installation/docker-compose/"
+
+[[home.selfhosted.methods]]
+title = "Bare Metal"
+text = "byro aus PyPI mit PostgreSQL, gunicorn, systemd und eigenem Reverse Proxy."
+docs_path = "installation/bare-metal/"
+
+[home.start]
+heading = "Wo du anfängst"
+
+[[home.start.paths]]
+icon = "book-open"
+title = "Dein Verein nutzt byro bereits"
+text = "Das Benutzerhandbuch beschreibt die tägliche Arbeit mit Mitgliedern, Beiträgen, Finanzen und Kommunikation."
+link = "Zum Benutzerhandbuch"
+docs_path = "usage/overview/"
+
+[[home.start.paths]]
+icon = "server"
+title = "Du richtest byro ein"
+text = "Installation, laufender Betrieb mit Updates und Backups sowie die Konfiguration einer Installation."
+link = "Zur Installationsanleitung"
+docs_path = "installation/overview/"
+
+[[home.start.paths]]
+icon = "code-xml"
+title = "Du willst byro erweitern"
+text = "Plugins entwickeln, die REST-API nutzen oder an byro und seiner Dokumentation mitarbeiten."
+link = "Zur Entwicklerdokumentation"
+docs_path = "development/overview/"
+
+[home.opensource]
+heading = "Open Source"
+text = "byro steht unter der GNU Affero General Public License 3.0. Code, Dokumentation und Plugins entstehen offen auf GitHub; Beiträge sind willkommen."
+cta_github = "byro auf GitHub"
+cta_contributing = "Mitwirken"
+contributing_path = "development/contributing/"
+
+[demo]
+title = "byro-Demo: Zugangsdaten und Hinweise"
+description = "Zugangsdaten für die öffentliche Demo-Installation von byro und Hinweise zur Nutzung."
+heading = "byro ausprobieren"
+lead = "In der Demo-Installation kannst du byro ohne eigene Installation ausprobieren. Alle Besucherinnen und Besucher melden sich mit denselben Zugangsdaten an."
+access_heading = "Zugangsdaten"
+url_label = "Adresse"
+username_label = "Benutzername"
+password_label = "Passwort"
+warning = "Alle mit diesen Zugangsdaten sehen, was du in der Demo einträgst. Gib deshalb keine echten personenbezogenen Daten ein."
+cta = "Demo öffnen"
+install_text = "Du möchtest byro für deinen Verein einsetzen?"
+install_link = "Zur Installationsanleitung"
+
+[not_found]
+title = "Seite nicht gefunden – byro"
+heading = "Seite nicht gefunden"
+text = "Unter dieser Adresse gibt es keine Seite."
+back = "Zur deutschen Startseite"

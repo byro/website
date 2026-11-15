@@ -1,0 +1,25 @@
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <img src="{{ url('assets/img/byro-logo.svg') }}" alt="" width="32" height="32">
+        <span>byro</span>
+      </div>
+      <nav aria-label="{{ c.footer_heading }}">
+        <ul class="footer-links">
+          <li><a href="{{ docs_url(lang) }}">{{ c.footer_docs }}</a></li>
+          <li><a href="{{ config.links.github }}">{{ c.footer_github }}</a></li>
+          <li><a href="{{ config.links.issues }}">{{ c.footer_issues }}</a></li>
+{% if demo.url %}
+          <li><a href="{{ url(lang ~ '/demo/') }}">{{ c.footer_demo }}</a></li>
+{% endif %}
+{% for other in languages if other != lang and other in page.alternates %}
+          <li><a href="{{ url(page.alternates[other]) }}" hreflang="{{ other }}" lang="{{ other }}" data-lang="{{ other }}">{{ all_content[other].common.switch_language }}</a></li>
+{% endfor %}
+        </ul>
+      </nav>
+      <div class="footer-legal">
+        <p>{{ c.footer_license|html }}</p>
+        <p>{{ c.footer_credits|html }}</p>
+      </div>
+    </div>
+  </footer>

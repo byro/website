@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block head %}
+  <script>
+    // Send visitors of the neutral start page to their language: an explicitly
+    // chosen language wins, then the browser languages, then the fallback.
+    // Without JavaScript this page stays and links to both versions.
+    (function () {
+      var languages = {{ languages|tojson }};
+      var choice;
+      try { choice = localStorage.getItem("byro-lang"); } catch (e) {}
+      if (languages.indexOf(choice) < 0) {
+        choice = {{ config.site.browser_fallback_language|tojson }};
+        var preferred = navigator.languages || [navigator.language || ""];
+        for (var i = 0; i < preferred.length; i++) {
+          var code = String(preferred[i]).slice(0, 2).toLowerCase();
+          if (languages.indexOf(code) >= 0) { choice = code; break; }
+        }
+      }
+      location.replace({{ url('')|tojson }} + choice + "/");
+    })();
+  </script>
+{% endblock %}
+{% block main %}
+    <section class="section">
+      <div class="container narrow root">
+        <img src="{{ url('assets/img/byro-logo.svg') }}" alt="" width="120" height="120">
+        <h1>{{ p.heading }}</h1>
+        <p class="lead">{{ p.lead }}</p>
+        <p>{{ p.choose }}</p>
+        <ul class="language-choice">
+          <li><a class="button primary" href="{{ url('de/') }}" hreflang="de" lang="de" data-lang="de">{{ p.german }}<span>{{ p.german_hint }}</span></a></li>
+          <li><a class="button secondary" href="{{ url('en/') }}" hreflang="en" lang="en" data-lang="en">{{ p.english }}<span>{{ p.english_hint }}</span></a></li>
+        </ul>
+      </div>
+    </section>
+{% endblock %}

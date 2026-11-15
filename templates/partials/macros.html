@@ -1,0 +1,11 @@
+{# Screenshots exist per language in two widths: <name>-<lang>-1280.webp and -2560.webp. #}
+{% macro screenshot(name, lang, alt, caption, sizes, eager=False) %}
+{% set base = 'assets/img/screenshots/' ~ name ~ '-' ~ lang %}
+<figure class="screenshot">
+  <img src="{{ url(base ~ '-1280.webp') }}"
+       srcset="{{ url(base ~ '-1280.webp') }} 1280w, {{ url(base ~ '-2560.webp') }} 2560w"
+       sizes="{{ sizes }}" width="1280" height="800" alt="{{ alt }}"
+       {% if eager %}fetchpriority="high"{% else %}loading="lazy"{% endif %} decoding="async">
+  <figcaption>{{ caption }}</figcaption>
+</figure>
+{% endmacro %}

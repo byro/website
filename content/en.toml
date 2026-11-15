@@ -1,0 +1,172 @@
+# English texts. Keep the keys in sync with content/de.toml.
+# Statements must be backed by the byro repository or its documentation.
+
+language_name = "English"
+og_locale = "en_US"
+
+[common]
+skip_link = "Skip to content"
+home_label = "byro – home"
+nav_label = "Main navigation"
+nav_docs = "Docs"
+nav_github = "GitHub"
+nav_demo = "Demo"
+switch_language = "This page in English"
+footer_heading = "Links"
+footer_docs = "Documentation"
+footer_github = "Source code on GitHub"
+footer_issues = "Report a bug or suggest a feature"
+footer_demo = "Demo"
+footer_license = """
+byro is free software released under the \
+<a href="https://github.com/byro/byro/blob/main/LICENSE">GNU Affero General Public License, version 3.0 only</a>.\
+"""
+footer_credits = """
+The byro logo was provided by Markus Kempken (<a href="http://enigmation.de">enigmation.de</a>). \
+The screenshots show byro v2026.4.0 with its bundled test data and, except for the logo \
+visible in them, are licensed under \
+<a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>. \
+Font: Inter (SIL Open Font License), icons: Lucide (ISC license).\
+"""
+
+[root]
+title = "byro – free membership administration for associations"
+description = "byro is a free, self-hosted membership administration tool for small and medium-sized clubs, NGOs and associations. This website is available in German and English."
+heading = "byro – free membership administration for associations"
+lead = "byro is a simple, self-hosted membership administration tool for small and medium-sized clubs, NGOs and associations, with a focus on the DACH region."
+choose = "Please choose your language:"
+german = "Deutsch"
+german_hint = "Zur deutschen Website"
+english = "English"
+english_hint = "Go to the English website"
+
+[home]
+title = "byro – open-source membership administration for associations"
+description = "byro is a free, self-hosted membership administration tool for small and medium-sized clubs, NGOs and associations, with a focus on the DACH region."
+eyebrow = "Free software for associations"
+heading = "Membership administration for associations, run by yourself"
+lead = "byro is a simple membership administration tool for small and medium-sized clubs, NGOs and associations, with a focus on the DACH region. It is stable, in active use in several communities and actively developed."
+cta_docs = "Read the documentation"
+cta_github = "Source code on GitHub"
+cta_demo = "Try the demo"
+hero_alt = "Member list in byro with member number, name and balance, and buttons to add, export and import members"
+screenshot_caption = "byro v2026.4.0 with test data"
+
+features_heading = "What byro does"
+features_intro = "byro covers the administrative work around members, fees and payments. Plugins add what is missing."
+
+[[home.features]]
+icon = "users"
+title = "Members and fees"
+text = "Create and edit members and their data, and manage memberships with their fee and payment interval."
+
+[[home.features]]
+icon = "banknote"
+title = "Payment matching"
+text = "Import bank transactions and match them to members. The official plugin reads bank statements in CAMT.053 and MT940 format."
+
+[[home.features]]
+icon = "mails"
+title = "Mails and documents"
+text = "Review mails before they are sent, adapt the templates and store documents for or from members, optionally sent out automatically."
+
+[[home.features]]
+icon = "id-card"
+title = "Member area"
+text = "Every member has their own page showing their bookings and can suggest changes to their data. The member directory helps members get in touch with each other."
+
+[[home.features]]
+icon = "shield-check"
+title = "Multi-factor login"
+text = "Accounts for the administration can be protected with an authenticator app (TOTP). Administrators can require it for everyone."
+
+[[home.features]]
+icon = "puzzle"
+title = "Plugins and REST API"
+text = "Plugins add importers, custom member data or whole features. The REST API connects byro to other systems."
+
+[[home.showcase]]
+image = "member-overview"
+heading = "Every member at a glance"
+text = "A member's overview shows their status, current balance, outstanding and expired fees, the length of their membership and their agreed fee."
+alt = "Member overview in byro showing the status “active”, balance, outstanding and expired fees, membership duration and monthly fee"
+
+[[home.showcase]]
+image = "bank-account"
+heading = "Keep track of finances"
+text = "Bank transactions are recorded on the association's accounts. Every single booking stays traceable, and byro lists transactions that are not yet matched to a member separately."
+alt = "Bank account in byro with a list of transactions: date, purpose, and incoming and outgoing amounts"
+
+[home.selfhosted]
+heading = "You run byro yourself"
+text = "byro is not a hosted service. You install it on your own server, or someone in your organization or community runs it for you. Whoever runs byro is responsible for the members' personal and financial data."
+methods_intro = "The documentation covers three ways to install byro:"
+not_heading = "What byro is not"
+not_text = "byro supports bookings and transactions, but it is not (yet) a complete bookkeeping software. It does not cover events or ticketing either."
+
+[[home.selfhosted.methods]]
+title = "byroctl"
+note = "recommended"
+text = "A command-line tool that sets up byro with Docker Compose and applies updates."
+docs_path = "installation/byroctl/"
+
+[[home.selfhosted.methods]]
+title = "Docker Compose"
+text = "The same container image, managed with plain <code>docker compose</code> commands."
+docs_path = "installation/docker-compose/"
+
+[[home.selfhosted.methods]]
+title = "Bare metal"
+text = "byro from PyPI with PostgreSQL, gunicorn, systemd and your own reverse proxy."
+docs_path = "installation/bare-metal/"
+
+[home.start]
+heading = "Where to start"
+
+[[home.start.paths]]
+icon = "book-open"
+title = "Your association already uses byro"
+text = "The user guide covers the daily work with members, fees, finances and communication."
+link = "Go to the user guide"
+docs_path = "usage/overview/"
+
+[[home.start.paths]]
+icon = "server"
+title = "You are setting up byro"
+text = "Installation, day-to-day operation with updates and backups, and the configuration of an installation."
+link = "Go to the installation guide"
+docs_path = "installation/overview/"
+
+[[home.start.paths]]
+icon = "code-xml"
+title = "You want to extend byro"
+text = "Develop plugins, use the REST API or contribute to byro and its documentation."
+link = "Go to the developer documentation"
+docs_path = "development/overview/"
+
+[home.opensource]
+heading = "Open source"
+text = "byro is licensed under the GNU Affero General Public License 3.0. Code, documentation and plugins are developed in the open on GitHub; contributions are welcome."
+cta_github = "byro on GitHub"
+cta_contributing = "Contributing"
+contributing_path = "development/contributing/"
+
+[demo]
+title = "byro demo: login details and notes"
+description = "Login details for the public byro demo installation and notes on using it."
+heading = "Try byro"
+lead = "The demo installation lets you try byro without installing it yourself. All visitors log in with the same credentials."
+access_heading = "Login details"
+url_label = "Address"
+username_label = "Username"
+password_label = "Password"
+warning = "Everyone with these credentials can see what you enter in the demo. Do not enter real personal data."
+cta = "Open the demo"
+install_text = "Want to use byro for your association?"
+install_link = "Go to the installation guide"
+
+[not_found]
+title = "Page not found – byro"
+heading = "Page not found"
+text = "There is no page at this address."
+back = "Go to the English home page"

@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block main %}
+    <section class="section">
+      <div class="container narrow">
+        <h1>{{ p.heading }}</h1>
+        <p class="lead">{{ p.lead }}</p>
+
+        <h2 id="access-heading">{{ p.access_heading }}</h2>
+        <dl class="credentials" aria-labelledby="access-heading">
+          <div>
+            <dt>{{ p.url_label }}</dt>
+            <dd><a href="{{ demo.url }}">{{ demo.url.removeprefix('https://') }}</a></dd>
+          </div>
+{% if demo.username %}
+          <div>
+            <dt>{{ p.username_label }}</dt>
+            <dd><code>{{ demo.username }}</code></dd>
+          </div>
+{% endif %}
+{% if demo.password %}
+          <div>
+            <dt>{{ p.password_label }}</dt>
+            <dd><code>{{ demo.password }}</code></dd>
+          </div>
+{% endif %}
+        </dl>
+        <p class="note">{{ p.warning }}</p>
+        <div class="actions">
+          <a class="button primary" href="{{ demo.url }}">{{ p.cta }}</a>
+        </div>
+        <p>{{ p.install_text }} <a href="{{ docs_url(lang, 'installation/overview/') }}">{{ p.install_link }}</a></p>
+      </div>
+    </section>
+{% endblock %}
