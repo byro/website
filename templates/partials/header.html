@@ -1,0 +1,20 @@
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="{{ url(lang ~ '/') }}" aria-label="{{ c.home_label }}">
+        <img src="{{ url('assets/img/byro-logo.svg') }}" alt="" width="40" height="40">
+        <span>byro</span>
+      </a>
+      <nav aria-label="{{ c.nav_label }}">
+        <ul class="nav-list">
+          <li><a href="{{ docs_url(lang) }}">{{ c.nav_docs }}</a></li>
+          <li><a href="{{ config.links.github }}">{{ c.nav_github }}</a></li>
+{% if demo.url %}
+          <li><a href="{{ url(lang ~ '/demo/') }}"{% if page.content_key == 'demo' %} aria-current="page"{% endif %}>{{ c.nav_demo }}</a></li>
+{% endif %}
+{% for other in languages if other != lang and other in page.alternates %}
+          <li><a class="language-link" href="{{ url(page.alternates[other]) }}" hreflang="{{ other }}" lang="{{ other }}" data-lang="{{ other }}" title="{{ all_content[other].common.switch_language }}">{{ all_content[other].language_name }}</a></li>
+{% endfor %}
+        </ul>
+      </nav>
+    </div>
+  </header>

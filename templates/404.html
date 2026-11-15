@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block main %}
+    <section class="section">
+      <div class="container narrow">
+{% for other in languages %}
+{% set text = all_content[other].not_found %}
+        <div lang="{{ other }}" class="not-found">
+          <{{ 'h1' if loop.first else 'h2' }}>{{ text.heading }}</{{ 'h1' if loop.first else 'h2' }}>
+          <p>{{ text.text }}</p>
+          <p><a href="{{ url(other ~ '/') }}" hreflang="{{ other }}">{{ text.back }}</a></p>
+        </div>
+{% endfor %}
+      </div>
+    </section>
+{% endblock %}

@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="{{ lang }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ p.title }}</title>
+{% if p.description is defined %}
+  <meta name="description" content="{{ p.description }}">
+{% endif %}
+{% if page.in_sitemap %}
+  <link rel="canonical" href="{{ absolute_url(page.path) }}">
+{% else %}
+  <meta name="robots" content="noindex">
+{% endif %}
+{% for hreflang, path in page.alternates.items() %}
+  <link rel="alternate" hreflang="{{ hreflang }}" href="{{ absolute_url(path) }}">
+{% endfor %}
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#4051b5">
+  <link rel="icon" href="{{ url('assets/img/byro-logo.svg') }}" type="image/svg+xml">
+  <link rel="icon" href="{{ url('assets/img/favicon-32.png') }}" sizes="32x32" type="image/png">
+  <link rel="apple-touch-icon" href="{{ url('assets/img/apple-touch-icon.png') }}">
+  <link rel="preload" href="{{ url('assets/fonts/inter-latin-wght-normal.woff2') }}" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="{{ url('assets/css/site.css') }}">
+{% if page.in_sitemap %}
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="byro">
+  <meta property="og:title" content="{{ p.title }}">
+  <meta property="og:description" content="{{ p.description }}">
+  <meta property="og:url" content="{{ absolute_url(page.path) }}">
+  <meta property="og:locale" content="{{ t.og_locale }}">
+{% for other in languages if other != lang %}
+  <meta property="og:locale:alternate" content="{{ all_content[other].og_locale }}">
+{% endfor %}
+  <meta property="og:image" content="{{ absolute_url('assets/img/og-' ~ lang ~ '.png') }}">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="{{ p.title }}">
+  <meta name="twitter:card" content="summary_large_image">
+{% endif %}
+{% if structured_data %}
+  <script type="application/ld+json">{{ structured_data }}</script>
+{% endif %}
+{% block head %}{% endblock %}
+</head>
+<body>
+  <a class="skip-link" href="#main">{{ c.skip_link }}</a>
+{% include "partials/header.html" %}
+  <main id="main">
+{% block main %}{% endblock %}
+  </main>
+{% include "partials/footer.html" %}
+  <script>
+    // Remember a language picked explicitly via a language link; the start
+    // page "/" uses it instead of the browser language.
+    document.addEventListener("click", function (event) {
+      var link = event.target.closest && event.target.closest("a[data-lang]");
+      if (!link) return;
+      try { localStorage.setItem("byro-lang", link.getAttribute("data-lang")); } catch (e) {}
+    });
+  </script>
+</body>
+</html>
