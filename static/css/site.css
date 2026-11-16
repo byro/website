@@ -1,4 +1,4 @@
-/* byro website. Colors follow the byro documentation (Zensical, primary "indigo"). */
+/* byro website. Colors follow the byro design guide (docs: Contributing → Design). */
 
 @font-face {
   font-family: "Inter";
@@ -9,18 +9,15 @@
 }
 
 :root {
-  --primary: #4051b5;
-  --primary-dark: #303fa1;
-  --link: #3546a8;
-  --focus: #526cfe;
+  --brand: #005da5; /* primary action backgrounds, white text on top */
+  --link: #005da5; /* links, icons, accents */
   --bg: #ffffff;
-  --bg-alt: #f5f6fb;
-  --surface: #ffffff;
-  --fg: #1c1e26;
-  --fg-muted: #4f5566;
-  --border: #e1e4ef;
-  --icon-bg: #eceefa;
-  --shadow: 0 1px 2px rgb(28 30 38 / 6%), 0 12px 32px rgb(28 30 38 / 10%);
+  --bg-alt: #f8f9fa; /* header and set-off sections */
+  --brand-surface: #ccdfed;
+  --fg: #212529;
+  --fg-muted: #56616b;
+  --border: #dae0e4;
+  --shadow: 0 1px 2px rgb(33 37 41 / 6%), 0 12px 32px rgb(33 37 41 / 10%);
   --radius: 12px;
   --gutter: 16px;
   color-scheme: light dark;
@@ -28,17 +25,13 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --primary: #4051b5;
-    --primary-dark: #5d6cc0;
-    --link: #9aa8f5;
-    --focus: #9aa8f5;
-    --bg: #1b1d24;
-    --bg-alt: #22252e;
-    --surface: #262a34;
-    --fg: #e6e8ef;
-    --fg-muted: #b0b5c4;
-    --border: #363b48;
-    --icon-bg: #2f3550;
+    --link: #74b5e7;
+    --bg: #212529;
+    --bg-alt: #1a1d20;
+    --brand-surface: #17364e;
+    --fg: #f8f9fa;
+    --fg-muted: #adb5bd;
+    --border: #343a40;
     --shadow: 0 1px 2px rgb(0 0 0 / 30%), 0 12px 32px rgb(0 0 0 / 35%);
   }
 }
@@ -106,7 +99,7 @@ a:hover {
 }
 
 :focus-visible {
-  outline: 3px solid var(--focus);
+  outline: 3px solid var(--link);
   outline-offset: 3px;
   border-radius: 4px;
 }
@@ -116,7 +109,7 @@ code {
   font-size: 0.92em;
   padding: 0.1em 0.35em;
   border-radius: 4px;
-  background: var(--icon-bg);
+  background: var(--bg-alt);
 }
 
 .container {
@@ -142,7 +135,7 @@ code {
   top: -100px;
   z-index: 10;
   padding: 0.5rem 1rem;
-  background: var(--surface);
+  background: var(--bg);
   color: var(--link);
   border-radius: 8px;
 }
@@ -154,6 +147,7 @@ code {
 /* Header */
 
 .site-header {
+  background: var(--bg-alt);
   border-bottom: 1px solid var(--border);
 }
 
@@ -244,7 +238,7 @@ code {
   justify-content: center;
   min-height: 2.875rem;
   padding: 0.65rem 1.35rem;
-  border: 2px solid var(--primary);
+  border: 2px solid var(--brand);
   border-radius: 10px;
   font-weight: 600;
   line-height: 1.3;
@@ -253,13 +247,12 @@ code {
 }
 
 .button.primary {
-  background: var(--primary);
+  background: var(--brand);
   color: #fff;
 }
 
-.button.primary:hover {
-  background: var(--primary-dark);
-  border-color: var(--primary-dark);
+.button:hover {
+  text-decoration: underline;
 }
 
 .button.secondary {
@@ -369,7 +362,7 @@ code {
   display: flex;
   flex-direction: column;
   padding: 1.5rem;
-  background: var(--surface);
+  background: var(--bg);
   border: 1px solid var(--border);
   border-radius: var(--radius);
 }
@@ -386,7 +379,7 @@ code {
   height: 2.75rem;
   margin-bottom: 1rem;
   border-radius: 10px;
-  background: var(--icon-bg);
+  background: var(--brand-surface);
   color: var(--link);
 }
 
@@ -456,7 +449,7 @@ code {
 
 .methods li {
   padding: 1rem 1.25rem;
-  background: var(--surface);
+  background: var(--bg);
   border: 1px solid var(--border);
   border-radius: var(--radius);
 }
@@ -475,7 +468,7 @@ code {
   margin-left: 0.4rem;
   padding: 0.05rem 0.55rem;
   border-radius: 999px;
-  background: var(--icon-bg);
+  background: var(--brand-surface);
   color: var(--link);
   font-size: 0.8rem;
   font-weight: 600;
@@ -483,9 +476,9 @@ code {
 
 .note {
   padding: 1.25rem 1.5rem;
-  border-left: 4px solid var(--primary);
+  border-left: 4px solid var(--link);
   border-radius: 0 var(--radius) var(--radius) 0;
-  background: var(--surface);
+  background: var(--bg);
 }
 
 .note p:last-child {
