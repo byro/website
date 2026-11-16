@@ -137,6 +137,9 @@ class DefaultBuildTest(BuildTestCase):
         robots = read(self.out / "robots.txt")
         self.assertIn("Sitemap: https://byro.info/sitemap.xml", robots)
 
+    def test_favicon_ico_is_in_site_root(self):
+        self.assertTrue((self.out / "favicon.ico").is_file())
+
     def test_open_graph_image_is_absolute(self):
         html = read(self.out / "de/index.html")
         match = re.search(r'<meta property="og:image" content="(.+?)">', html)
