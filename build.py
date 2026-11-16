@@ -102,6 +102,8 @@ def build(config: dict, out: Path) -> None:
     if out.exists():
         shutil.rmtree(out)
     shutil.copytree(ROOT / "static", out / "assets")
+    # Some clients request /favicon.ico without reading the icon links.
+    shutil.copy(ROOT / "static/img/favicon.ico", out / "favicon.ico")
 
     for page in pages:
         t = config["content"][page.lang]
