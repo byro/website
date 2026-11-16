@@ -18,6 +18,9 @@
   --fg-muted: #56616b;
   --border: #dae0e4;
   --shadow: 0 1px 2px rgb(33 37 41 / 6%), 0 12px 32px rgb(33 37 41 / 10%);
+  --h1-weight: 750;
+  --h2-weight: 700;
+  --h3-weight: 650;
   --radius: 12px;
   --gutter: 16px;
   color-scheme: light dark;
@@ -29,10 +32,14 @@
     --bg: #212529;
     --bg-alt: #1a1d20;
     --brand-surface: #17364e;
-    --fg: #f8f9fa;
+    --fg: #dae0e4;
     --fg-muted: #adb5bd;
     --border: #343a40;
     --shadow: 0 1px 2px rgb(0 0 0 / 30%), 0 12px 32px rgb(0 0 0 / 35%);
+    /* Light text on a dark background looks heavier, so headings get lighter. */
+    --h1-weight: 700;
+    --h2-weight: 650;
+    --h3-weight: 600;
   }
 }
 
@@ -72,17 +79,17 @@ h3 {
 
 h1 {
   font-size: clamp(1.75rem, 1.2rem + 3vw, 3.25rem);
-  font-weight: 750;
+  font-weight: var(--h1-weight);
 }
 
 h2 {
   font-size: clamp(1.6rem, 1.3rem + 1.4vw, 2.2rem);
-  font-weight: 700;
+  font-weight: var(--h2-weight);
 }
 
 h3 {
   font-size: 1.15rem;
-  font-weight: 650;
+  font-weight: var(--h3-weight);
 }
 
 p {
