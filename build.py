@@ -56,6 +56,11 @@ def site_pages(config: dict) -> list[Page]:
         demo["x-default"] = demo[default]
         pages += [Page("demo.html", f"{lang}/demo/", lang, "demo", demo) for lang in languages]
 
+    # The legal pages have their own paths per language, set in content/<lang>.toml.
+    legal = {lang: config["content"][lang]["legal"]["path"] for lang in languages}
+    legal["x-default"] = legal[default]
+    pages += [Page("legal.html", legal[lang], lang, "legal", legal) for lang in languages]
+
     pages.append(Page("404.html", "404.html", default, "not_found", in_sitemap=False))
     return pages
 
@@ -76,7 +81,8 @@ def build(config: dict, out: Path) -> None:
         return config["links"]["docs"][lang] + path
 
     env = Environment(
-        loader=FileSystemLoader(ROOT / "templates"),
+        # content/ holds the legal texts, which are HTML fragments (legal.<lang>.html).
+        loader=FileSystemLoader([ROOT / "templates", ROOT / "content"]),
         autoescape=True,
         undefined=StrictUndefined,
         trim_blocks=True,
