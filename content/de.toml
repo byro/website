@@ -17,6 +17,8 @@ footer_docs = "Dokumentation"
 footer_github = "Quellcode auf GitHub"
 footer_issues = "Fehler melden oder Funktion vorschlagen"
 footer_demo = "Demo"
+footer_imprint = "Impressum"
+footer_privacy = "Datenschutz"
 footer_license = """
 byro ist freie Software unter der \
 <a href="https://github.com/byro/byro/blob/main/LICENSE">GNU Affero General Public License, Version 3.0 only</a>.\
@@ -164,6 +166,14 @@ warning = "Alle mit diesen Zugangsdaten sehen, was du in der Demo einträgst. Gi
 cta = "Demo öffnen"
 install_text = "Du möchtest byro für deinen Verein einsetzen?"
 install_link = "Zur Installationsanleitung"
+
+# The legal text itself is in content/legal.de.html.
+[legal]
+title = "Impressum und Datenschutz – byro"
+description = "Impressum und Datenschutzerklärung des Open-Source-Projekts byro."
+path = "rechtliches/"
+imprint_id = "impressum"
+privacy_id = "datenschutz"
 
 [not_found]
 title = "Seite nicht gefunden – byro"

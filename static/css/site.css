@@ -544,6 +544,16 @@ code {
   font-size: 1.5rem;
 }
 
+/* Legal notice and privacy policy */
+
+.legal h3 {
+  margin-top: 2rem;
+}
+
+.legal address {
+  font-style: normal;
+}
+
 /* Start page "/" */
 
 .root {

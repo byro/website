@@ -15,6 +15,8 @@
 {% for other in languages if other != lang and other in page.alternates %}
           <li><a href="{{ url(page.alternates[other]) }}" hreflang="{{ other }}" lang="{{ other }}" data-lang="{{ other }}">{{ all_content[other].common.switch_language }}</a></li>
 {% endfor %}
+          <li><a href="{{ url(t.legal.path) }}#{{ t.legal.imprint_id }}">{{ c.footer_imprint }}</a></li>
+          <li><a href="{{ url(t.legal.path) }}#{{ t.legal.privacy_id }}">{{ c.footer_privacy }}</a></li>
         </ul>
       </nav>
       <div class="footer-legal">

@@ -91,8 +91,47 @@ class DefaultBuildTest(BuildTestCase):
     def test_sitemap_lists_public_pages(self):
         locs = re.findall(r"<loc>(.+?)</loc>", read(self.out / "sitemap.xml"))
         self.assertEqual(
-            locs, ["https://byro.info/", "https://byro.info/de/", "https://byro.info/en/"]
+            locs,
+            [
+                "https://byro.info/",
+                "https://byro.info/de/",
+                "https://byro.info/en/",
+                "https://byro.info/rechtliches/",
+                "https://byro.info/legal/",
+            ],
         )
+
+    def test_legal_pages_have_sections_and_mail_link(self):
+        for path, lang, ids in [
+            ("rechtliches/index.html", "de", ["impressum", "datenschutz"]),
+            ("legal/index.html", "en", ["legal-notice", "privacy"]),
+        ]:
+            html = read(self.out / path)
+            self.assertIn(f'<html lang="{lang}"', html, path)
+            for section_id in ids:
+                self.assertIn(f'id="{section_id}"', html, path)
+            self.assertIn('<a href="mailto:kontakt@byro.info">kontakt@byro.info</a>', html, path)
+
+    def test_legal_pages_reference_each_other_with_hreflang(self):
+        for path in ["rechtliches/index.html", "legal/index.html"]:
+            html = read(self.out / path)
+            self.assertIn('<link rel="alternate" hreflang="de" href="https://byro.info/rechtliches/">', html)
+            self.assertIn('<link rel="alternate" hreflang="en" href="https://byro.info/legal/">', html)
+            self.assertIn(
+                '<link rel="alternate" hreflang="x-default" href="https://byro.info/rechtliches/">', html
+            )
+
+    def test_every_page_links_legal_sections_in_its_language(self):
+        links = {
+            "de": ['href="/rechtliches/#impressum"', 'href="/rechtliches/#datenschutz"'],
+            "en": ['href="/legal/#legal-notice"', 'href="/legal/#privacy"'],
+        }
+        for page in self.out.rglob("*.html"):
+            html = read(page)
+            lang = re.search(r'<html lang="(\w+)"', html)[1]
+            footer = html[html.index('<footer class="site-footer">'):]
+            for link in links[lang]:
+                self.assertIn(link, footer, page)
 
     def test_robots_points_to_sitemap(self):
         robots = read(self.out / "robots.txt")
@@ -116,6 +155,10 @@ class SubpathBuildTest(BuildTestCase):
         self.assertIn('<link rel="canonical" href="https://byro.github.io/website/de/">', html)
         self.assertIn('href="/website/en/"', html)
         self.assertNotRegex(html, r'(href|src)="/(de|en|assets)/')
+
+    def test_legal_links_include_base_path(self):
+        self.assertIn('href="/website/rechtliches/#impressum"', read(self.out / "de/index.html"))
+        self.assertIn('href="/website/legal/#privacy"', read(self.out / "en/index.html"))
 
     def test_sitemap_and_robots_use_base_path(self):
         self.assertIn(
@@ -168,6 +211,12 @@ class CheckTest(unittest.TestCase):
         page.write_text(read(page).replace('href="/de/"', 'href="/missing/"', 1))
         errors = check.check_site(self.out, "https://byro.info")
         self.assertTrue(any("/missing/" in error for error in errors), errors)
+
+    def test_reports_missing_anchor_on_other_page(self):
+        page = self.out / "de/index.html"
+        page.write_text(read(page).replace('href="/rechtliches/#impressum"', 'href="/rechtliches/#fehlt"', 1))
+        errors = check.check_site(self.out, "https://byro.info")
+        self.assertTrue(any("#fehlt" in error for error in errors), errors)
 
     def test_reports_external_script(self):
         page = self.out / "de/index.html"

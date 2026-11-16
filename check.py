@@ -103,10 +103,13 @@ def check_site(out: Path, site_url: str) -> list[str]:
         return target
 
     pages = {}
+    ids = {}  # file -> element ids, for fragments of links between pages
+    fragment_links = []  # (where, link, target file, fragment)
     for file in sorted(out.rglob("*.html")):
         parser = PageParser()
         parser.feed(file.read_text(encoding="utf-8"))
         pages[page_url(out, file, site_url)] = parser
+        ids[file] = parser.ids
         where = file.relative_to(out).as_posix()
 
         if not parser.lang:
@@ -140,6 +143,12 @@ def check_site(out: Path, site_url: str) -> list[str]:
                 errors.append(f"{where}: {link} is outside the base path {base_path}")
             elif not target.is_file():
                 errors.append(f"{where}: broken link {link}")
+            elif parts.fragment and target.suffix == ".html":
+                fragment_links.append((where, link, target, parts.fragment))
+
+    for where, link, target, fragment in fragment_links:
+        if fragment not in ids.get(target, set()):
+            errors.append(f"{where}: no element with id for {link}")
 
     for url, parser in pages.items():
         for hreflang, target in parser.alternates.items():
